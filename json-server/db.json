@@ -1,0 +1,185 @@
+{
+  "vehicles": [
+    {
+      "id": 1,
+      "name": "SEAT Ibiza",
+      "description": "Elegante y aerodinámico, con líneas más marcadas y curvas dinámicas que te inspiran para moverte a tu manera.",
+      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models/nuevo-seat-ibiza.png",
+      "type": "car",
+      "price": 12,
+      "seats": 5,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "SEAT Arona",
+      "description": "Diseño e ideas atrevidas que te inspiran para dejarte llevar.",
+      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models/nuevo-seat-arona.png",
+      "type": "car",
+      "price": 12.50,
+      "seats": 5,
+      "location": {
+        "place": "Estación Del Arte",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 3,
+      "name": "SEAT León",
+      "description": "Conduce de forma más inteligente, con un rendimiento dinámico y un diseño elegante.",
+      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models-dgt/nuevo-seat-leon-5d.png",
+      "type": "car",
+      "price": 11.50,
+      "seats": 5,
+      "location": {
+        "place": "O'Donnell",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.4236284969864,
+          "long": -3.6691060907155686
+        }
+      }
+    },
+    {
+      "id": 4,
+      "name": "SEAT Ateca",
+      "description": "Tecnología avanzada que hace que todo funcione a la perfección, para que puedas disfrutar al máximo de la ciudad.",
+      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models-dgt/nuevo-seat-ateca.png",
+      "type": "car",
+      "price": 11.99,
+      "seats": 5,
+      "location": {
+        "place": "Fundación Canal",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.46620741930048,
+          "long": -3.6880304479667
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "SEAT MÓ 125 #1",
+      "description": "La forma más inteligente de moverte por la ciudad",
+      "image": "https://www.seat.es/content/dam/public/seat-website/global-header/global-navigation/models/new-seat-mo-125-performance-electric-scooter.png",
+      "type": "motorcycle",
+      "price": 7.99,
+      "seats": 1,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 6,
+      "name": "SEAT MÓ 125 #2",
+      "description": "La forma más inteligente de moverte por la ciudad",
+      "image": "https://www.seat.es/content/dam/public/seat-website/global-header/global-navigation/models/new-seat-mo-125-performance-electric-scooter.png",
+      "type": "motorcycle",
+      "price": 7.99,
+      "seats": 1,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 7,
+      "name": "SEAT MÓ 50 #2",
+      "description": "La mejor moto eléctrica de su segmento.",
+      "image": "https://www.seat.es/content/dam/public/seat-website/carworlds/seat-mo/overview/version-compare/seat-mo-50-electric-scooter.jpg",
+      "type": "motorcycle",
+      "price": 6.99,
+      "seats": 1,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "SEAT MÓ 65 #1",
+      "description": "Con tecnología avanzada para que nunca pierdas el ritmo.",
+      "image": "https://www.seat.es/content/dam/public/seat-website/carworlds/seat-mo/overview/version-compare/seat-mo-65-electric-scooter.jpg",
+      "type": "electric_scooter",
+      "price": 3.99,
+      "seats": 1,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 9,
+      "name": "SEAT MÓ 65 #2",
+      "description": "Con tecnología avanzada para que nunca pierdas el ritmo.",
+      "image": "https://www.seat.es/content/dam/public/seat-website/carworlds/seat-mo/overview/version-compare/seat-mo-65-electric-scooter.jpg",
+      "type": "electric_scooter",
+      "price": 3.99,
+      "seats": 1,
+      "location": {
+        "place": "Estación Del Arte",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.40897378460105,
+          "long": -3.692486305133874
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "SEAT MÓ 65 #2",
+      "description": "Con tecnología avanzada para que nunca pierdas el ritmo.",
+      "image": "https://www.seat.es/content/dam/public/seat-website/carworlds/seat-mo/overview/version-compare/seat-mo-65-electric-scooter.jpg",
+      "type": "electric_scooter",
+      "price": 3.99,
+      "seats": 1,
+      "location": {
+        "place": "O'Donnell",
+        "city": "Madrid",
+        "coordinates": {
+          "lat": 40.4236284969864,
+          "long": -3.6691060907155686
+        }
+      }
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "fullName": "Frank Moore",
+      "vehicleId": 1
+    },
+    {
+      "id": 2,
+      "fullName": "Eva V.",
+      "vehicleId": 3
+    }
+  ]
+}
