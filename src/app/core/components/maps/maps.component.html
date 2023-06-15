@@ -1,0 +1,14 @@
+<div class="app-maps" *ngIf="apiLoaded | async">
+  <google-map
+    [center]="center"
+    [zoom]="zoom"
+    [options]="options"
+    height="100%"
+    width="100%"
+  >
+    <map-marker
+      *ngFor="let markerPosition of markerPositions"
+      [options]="markerOptions"
+      [position]="markerPosition"></map-marker>
+  </google-map>
+</div>
