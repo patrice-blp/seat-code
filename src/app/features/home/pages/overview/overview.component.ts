@@ -6,6 +6,7 @@ import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
 import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service";
 import {MapMarker} from "../../../../core/components/maps/maps.model";
 import {MatSelectChange} from "@angular/material/select";
+import {VehiclesBookingService} from "../../../../core/states/vehicles-booking/vehicles-booking.service";
 
 @Component({
   selector: 'app-overview',
@@ -15,7 +16,8 @@ import {MatSelectChange} from "@angular/material/select";
 export class OverviewComponent implements OnInit, OnDestroy {
   constructor(
     private readonly vehiclesQuery: VehiclesQuery,
-    private readonly vehiclesService: VehiclesService
+    private readonly vehiclesService: VehiclesService,
+    private readonly vehiclesBookingService: VehiclesBookingService,
   ) {}
 
   vehiclesSubscription$: Subscription;
@@ -29,6 +31,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
     const request$ = this.vehiclesService.getVehiclesByType(value).subscribe((dd) => {
       request$ && request$.unsubscribe();
     });
+  }
+
+  onMarkerClick(id: number) {
+    alert(`Vehicle id = ${id}`);
   }
 
   ngOnInit() {

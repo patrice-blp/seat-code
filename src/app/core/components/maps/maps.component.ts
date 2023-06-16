@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {GoogleMapsModule, MapInfoWindow, MapMarker as BaseMapMarker} from "@angular/google-maps";
 import {HttpClient, HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
@@ -30,6 +30,8 @@ export class MapsComponent {
 
   @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
   @Input() markers: MapMarker[] = [];
+  @Input() markerDetails: any;
+  @Output() markerClick = new EventEmitter<number>();
 
   zoom = 13;
   markerOptions: google.maps.MarkerOptions = {
@@ -40,6 +42,7 @@ export class MapsComponent {
     fullscreenControl: false,
     streetViewControl: false,
     mapTypeControl: false,
+    draggableCursor: "",
     styles: [
       {
         featureType: "poi",
@@ -72,6 +75,7 @@ export class MapsComponent {
   openInfoWindow(marker: BaseMapMarker, itemMarker: MapMarker) {
     this.itemMarker = itemMarker;
     this.infoWindow.open(marker);
+    this.markerClick.emit(itemMarker.data.id);
   }
 
   mapIcon(type: MapIcon) {

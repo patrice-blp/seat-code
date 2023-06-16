@@ -1,12 +1,9 @@
+import {CoordinatesModel} from "../../model/coordinates.model";
+
 type Location = {
   place: string
   city: string
-  coordinates: Coordinates
-}
-
-type Coordinates = {
-  lat: number
-  long: number
+  coordinates: CoordinatesModel
 }
 
 export type VehicleType = "car" | "motorcycle" | "electric_scooter"

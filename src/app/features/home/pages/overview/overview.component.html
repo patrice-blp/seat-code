@@ -1,5 +1,5 @@
 <div class="home-container">
-  <app-maps [markers]="mapMarkers"></app-maps>
+  <app-maps [markers]="mapMarkers" (markerClick)="onMarkerClick($event)"></app-maps>
   <mat-form-field class="form-field">
     <mat-label>Vehicle type</mat-label>
     <mat-select [formControl]="filterForm" multiple (selectionChange)="onFilterChange($event)">
