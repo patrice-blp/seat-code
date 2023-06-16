@@ -7,7 +7,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {catchError, map, Observable, of} from "rxjs";
 
 import {GOOGLE_MAPS_API_KEY} from "../../const/google-maps.const";
-import {MapMarker} from "./maps.model";
+import {MapIcon, MapMarker} from "./maps.model";
 
 @Component({
   selector: 'app-maps',
@@ -74,5 +74,14 @@ export class MapsComponent {
     this.infoWindow.open(marker);
   }
 
-  icon(type: string) {}
+  mapIcon(type: MapIcon) {
+    const icons = {
+      car: "car.png",
+      motorcycle: "moped.png",
+      electric_scooter: "scooter.png",
+    };
+
+    const icon = icons[type] ?? icons.car;
+    return `/assets/${icon}`;
+  }
 }

@@ -11,6 +11,7 @@
       *ngFor="let mapMarker of markers"
       [options]="markerOptions"
       [position]="mapMarker.coordinates" [title]="mapMarker.title"
+      [icon]="mapIcon(mapMarker.data.type)"
       (mapClick)="openInfoWindow(marker, mapMarker)"></map-marker>
     <map-info-window>
       <mat-card class="map-card" *ngIf="itemMarker?.title">

@@ -9,12 +9,14 @@ type Coordinates = {
   long: number
 }
 
+export type VehicleType = "car" | "motorcycle" | "electric_scooter"
+
 export interface Vehicle {
   id: number
   name: string
   description: string
   image: string
-  type: string
+  type: VehicleType
   price: number
   seats: number
   location: Location

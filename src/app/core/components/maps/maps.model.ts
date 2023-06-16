@@ -1,4 +1,4 @@
-import {Vehicle} from "../../states/vehicles/vehicle.model";
+import {Vehicle, VehicleType} from "../../states/vehicles/vehicle.model";
 
 type MarkerPlace = Pick<Vehicle["location"], "place" | "city">;
 export type MapMarker = {
@@ -6,3 +6,5 @@ export type MapMarker = {
   coordinates: google.maps.LatLngLiteral;
   data: Omit<Vehicle, "location" | "name"> & MarkerPlace
 }
+
+export type MapIcon = VehicleType;
