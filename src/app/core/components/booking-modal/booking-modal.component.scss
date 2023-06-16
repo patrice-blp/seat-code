@@ -1,0 +1,10 @@
+@use '@angular/material' as mat;
+
+$blue-gray-palette: mat.define-palette(mat.$blue-gray-palette);
+
+.booking-heading {
+  font-size: 14px;
+  color: mat.get-color-from-palette($blue-gray-palette);
+  padding-bottom: 0;
+  margin-bottom: 0;
+}

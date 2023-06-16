@@ -46,7 +46,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   openDialog(params: BookSubjectPayload) {
     const dialogRef = this.dialog.open(BookingModalComponent, {
       data: params,
-      width: "400px",
+      width: "600px",
     });
 
     dialogRef.afterClosed().subscribe(async (result) => {
