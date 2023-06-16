@@ -26,10 +26,10 @@
       "price": 12.50,
       "seats": 5,
       "location": {
-        "place": "Estación Del Arte",
+        "place": "Barajas",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.46498114512752,
+          "long": -3.5932129488720466
         }
       }
     },
@@ -79,8 +79,8 @@
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.42736711927347,
+          "long": -3.6474509230800045
         }
       }
     },
@@ -96,8 +96,8 @@
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.426177553686024,
+          "long": -3.684241805950463
         }
       }
     },
@@ -113,8 +113,8 @@
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.422958111513424,
+          "long": -3.7132318159064073
         }
       }
     },
@@ -130,8 +130,8 @@
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.38988327695034,
+          "long": -3.746327971060342
         }
       }
     },
@@ -147,8 +147,8 @@
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "lat": 40.40897378460105,
-          "long": -3.692486305133874
+          "lat": 40.456810660622004,
+          "long": -3.726408482542383
         }
       }
     },

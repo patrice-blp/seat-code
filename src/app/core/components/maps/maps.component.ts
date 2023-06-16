@@ -1,10 +1,13 @@
-import {Component} from '@angular/core';
-import {CommonModule} from "@angular/common";
-import {GoogleMapsModule, } from "@angular/google-maps";
+import {Component, Input, ViewChild} from '@angular/core';
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {GoogleMapsModule, MapInfoWindow, MapMarker as BaseMapMarker} from "@angular/google-maps";
 import {HttpClient, HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
 import {catchError, map, Observable, of} from "rxjs";
 
-const GOOGLE_MAP_API_KEY = "googleMaps_api_key";
+import {GOOGLE_MAPS_API_KEY} from "../../const/google-maps.const";
+import {MapMarker} from "./maps.model";
 
 @Component({
   selector: 'app-maps',
@@ -16,30 +19,58 @@ const GOOGLE_MAP_API_KEY = "googleMaps_api_key";
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
+    MatCardModule,
+    MatButtonModule,
+    NgOptimizedImage,
   ],
 })
 export class MapsComponent {
   apiLoaded: Observable<boolean>;
+  itemMarker: MapMarker;
+
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
+  @Input() markers: MapMarker[] = [];
+
+  zoom = 13;
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
+  };
+
+  options: google.maps.MapOptions = {
+    fullscreenControl: false,
+    streetViewControl: false,
+    mapTypeControl: false,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [{ visibility: "off" }],
+      },
+      {
+        featureType: "landscape",
+        stylers: [{ visibility: "off" }],
+      },
+    ]
+  };
 
   constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}`, 'callback')
+    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}`, 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),
       );
   }
 
-  center: google.maps.LatLngLiteral = {lat: 24, lng: 12};
-  zoom = 4;
-  markerOptions: google.maps.MarkerOptions = {draggable: false};
-  markerPositions: google.maps.LatLngLiteral[] = [];
-  options: google.maps.MapOptions = {
-    fullscreenControl: false,
-    streetViewControl: false,
-    mapTypeControl: false,
-  };
+  get centerPoint() {
+    const bounds = new google.maps.LatLngBounds();
+    this.markers.forEach(function (element) {
+      bounds.extend(element.coordinates)
+    });
 
-  addMarker(event: google.maps.MapMouseEvent) {
-    event.latLng && this.markerPositions.push(event.latLng.toJSON());
+    return bounds.getCenter();
+  }
+
+  openInfoWindow(marker: BaseMapMarker, itemMarker: MapMarker) {
+    this.itemMarker = itemMarker;
+    this.infoWindow.open(marker);
   }
 }

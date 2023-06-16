@@ -8,6 +8,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { NavbarComponent } from './core/components/navbar/navbar.component';
+import {NG_ENTITY_SERVICE_CONFIG} from "@datorama/akita-ng-entity-service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,12 +19,20 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NG_ENTITY_SERVICE_CONFIG,
+      useValue: {
+        baseUrl: "http://localhost:3000"
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

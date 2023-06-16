@@ -1,14 +1,34 @@
 <div class="app-maps" *ngIf="apiLoaded | async">
   <google-map
-    [center]="center"
     [zoom]="zoom"
     [options]="options"
+    [center]="centerPoint"
     height="100%"
     width="100%"
   >
     <map-marker
-      *ngFor="let markerPosition of markerPositions"
+      #marker="mapMarker"
+      *ngFor="let mapMarker of markers"
       [options]="markerOptions"
-      [position]="markerPosition"></map-marker>
+      [position]="mapMarker.coordinates" [title]="mapMarker.title"
+      (mapClick)="openInfoWindow(marker, mapMarker)"></map-marker>
+    <map-info-window>
+      <mat-card class="map-card" *ngIf="itemMarker?.title">
+        <mat-card-header>
+          <mat-card-title>{{ itemMarker.title }}</mat-card-title>
+        </mat-card-header>
+        <div class="map-img">
+          <img mat-card-image [src]="itemMarker.data.image" [alt]="itemMarker.title" [width]="280" [height]="157">
+        </div>
+        <mat-card-content>
+          <p>
+            {{ itemMarker.data.description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button color="primary">Booking</button>
+        </mat-card-actions>
+      </mat-card>
+    </map-info-window>
   </google-map>
 </div>
