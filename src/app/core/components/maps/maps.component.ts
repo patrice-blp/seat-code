@@ -1,13 +1,12 @@
 import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {GoogleMapsModule, MapInfoWindow, MapMarker as BaseMapMarker} from "@angular/google-maps";
 import {HttpClient, HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
 import {catchError, map, Observable, of} from "rxjs";
 
 import {GOOGLE_MAPS_API_KEY} from "../../const/google-maps.const";
 import {MapIcon, MapMarker} from "./maps.model";
+import {MapInfoWindowComponent} from "../map-info-window/map-info-window.component";
 
 @Component({
   selector: 'app-maps',
@@ -19,9 +18,7 @@ import {MapIcon, MapMarker} from "./maps.model";
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    MatCardModule,
-    MatButtonModule,
-    NgOptimizedImage,
+    MapInfoWindowComponent,
   ],
 })
 export class MapsComponent {

@@ -1,11 +1,6 @@
-import {CoordinatesModel} from "../../model/coordinates.model";
+import {BookingModel} from "../../model/booking.model";
 
-export interface VehicleBooking {
-  id: number;
-  vehicleId: number;
-  fullName: string;
-  coordinates?: CoordinatesModel;
-}
+export interface VehicleBooking extends BookingModel {}
 
 export function createVehicleBooking(params: Partial<VehicleBooking>) {
   return {} as VehicleBooking;

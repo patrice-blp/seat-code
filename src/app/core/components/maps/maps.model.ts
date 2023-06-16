@@ -1,4 +1,4 @@
-import {Vehicle, VehicleType} from "../../states/vehicles/vehicle.model";
+import {Vehicle, VehicleType} from "../../model/vehicle.model";
 
 type MarkerPlace = Pick<Vehicle["location"], "place" | "city">;
 export type MapMarker = {

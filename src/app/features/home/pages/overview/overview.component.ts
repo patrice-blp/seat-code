@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MatSelectChange} from "@angular/material/select";
 import {FormControl} from "@angular/forms";
 import {Subscription} from "rxjs";
 
 import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
 import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service";
 import {MapMarker} from "../../../../core/components/maps/maps.model";
-import {MatSelectChange} from "@angular/material/select";
-import {VehiclesBookingService} from "../../../../core/states/vehicles-booking/vehicles-booking.service";
+import {BookingsService} from "../../../../core/states/bookings/bookings.service";
 
 @Component({
   selector: 'app-overview',
@@ -17,13 +17,12 @@ export class OverviewComponent implements OnInit, OnDestroy {
   constructor(
     private readonly vehiclesQuery: VehiclesQuery,
     private readonly vehiclesService: VehiclesService,
-    private readonly vehiclesBookingService: VehiclesBookingService,
+    private readonly bookingsService: BookingsService,
   ) {}
 
   vehiclesSubscription$: Subscription;
   mapMarkers: MapMarker[] = [];
 
-  selectedFilters: string[] = [];
   filterForm = new FormControl('');
   filterList: { value: string; name: string; }[] = [];
 
@@ -34,7 +33,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   onMarkerClick(id: number) {
-    alert(`Vehicle id = ${id}`);
+    this.bookingsService.get(id).subscribe();
   }
 
   ngOnInit() {

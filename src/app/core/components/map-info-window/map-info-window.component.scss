@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+$red-palette: mat.define-palette(mat.$red-palette);
+
+.map-card {
+  width: 400px;
+
+  .map-img {
+    text-align: center;
+  }
+}
+
+.not-available {
+  color: mat.get-color-from-palette($red-palette);
+  font-size: 15px;
+}
+

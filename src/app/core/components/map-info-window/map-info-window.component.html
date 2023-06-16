@@ -1,0 +1,20 @@
+<mat-card class="map-card" *ngIf="item?.title">
+  <mat-card-header>
+    <mat-card-title>{{ item.title }}</mat-card-title>
+  </mat-card-header>
+  <div class="map-img">
+    <img mat-card-image [src]="item.data.image" [alt]="item.title" [width]="280" [height]="157">
+  </div>
+  <mat-card-content>
+    <p>
+      Seats: <strong>{{ item.data.seats }}</strong>
+    </p>
+    <p>
+      {{ item.data.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <span class="not-available" *ngIf="bookingInfo && !!bookingInfo.id">Vehicle not available</span>
+    <button mat-flat-button color="primary" *ngIf="bookingInfo && !bookingInfo.id">Book</button>
+  </mat-card-actions>
+</mat-card>

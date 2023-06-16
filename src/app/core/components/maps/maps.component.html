@@ -14,25 +14,7 @@
       [icon]="mapIcon(mapMarker.data.type)"
       (mapClick)="openInfoWindow(marker, mapMarker)"></map-marker>
     <map-info-window>
-      <mat-card class="map-card" *ngIf="itemMarker?.title">
-        <mat-card-header>
-          <mat-card-title>{{ itemMarker.title }}</mat-card-title>
-        </mat-card-header>
-        <div class="map-img">
-          <img mat-card-image [src]="itemMarker.data.image" [alt]="itemMarker.title" [width]="280" [height]="157">
-        </div>
-        <mat-card-content>
-          <p>
-            Seats: <strong>{{ itemMarker.data.seats }}</strong>
-          </p>
-          <p>
-            {{ itemMarker.data.description }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button mat-button color="primary">Booking</button>
-        </mat-card-actions>
-      </mat-card>
+      <app-map-info-window [item]="itemMarker"></app-map-info-window>
     </map-info-window>
   </google-map>
 </div>
