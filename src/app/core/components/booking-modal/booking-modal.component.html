@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{ data?.name }}</h1>
+<div mat-dialog-content>
+  <p>{{data?.description}}</p>
+  <mat-form-field style="display: flex;">
+    <mat-label>Your full name</mat-label>
+    <input matInput [(ngModel)]="fullName">
+  </mat-form-field>
+  <mat-chip-listbox>
+    <mat-chip-option color="warn" selected="false" selectable="false">Seats: <strong>{{data?.seats}}</strong></mat-chip-option>
+    <mat-chip-option color="accent" selected selectable="false">{{data?.price}}€/day</mat-chip-option>
+  </mat-chip-listbox>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-flat-button (click)="onNoClick()">Close</button>
+  <button mat-flat-button (click)="onBooking()" color="primary">Book</button>
+</div>

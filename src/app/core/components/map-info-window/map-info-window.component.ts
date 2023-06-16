@@ -7,6 +7,8 @@ import {Subscription} from "rxjs";
 import {MapMarker} from "../maps/maps.model";
 import {BookingsQuery} from "../../states/bookings/bookings.query";
 import {BookingModel} from "../../model/booking.model";
+import {bookSubject} from "../../subject/book.subject";
+import {MatChipsModule} from "@angular/material/chips";
 
 @Component({
   selector: 'app-map-info-window',
@@ -18,6 +20,7 @@ import {BookingModel} from "../../model/booking.model";
     NgOptimizedImage,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
   ]
 })
 export class MapInfoWindowComponent implements OnDestroy, OnChanges {
@@ -27,6 +30,14 @@ export class MapInfoWindowComponent implements OnDestroy, OnChanges {
   @Input() item: MapMarker;
 
   constructor(private readonly bookingsQuery: BookingsQuery) {
+  }
+
+  openModal() {
+    bookSubject.next({
+      vehicleId: this.item.data.id,
+      name: this.item.title,
+      ...this.item.data
+    });
   }
 
   ngOnDestroy() {

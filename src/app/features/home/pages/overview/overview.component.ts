@@ -1,12 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatSelectChange} from "@angular/material/select";
+import {MatDialog} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
-import {Subscription} from "rxjs";
+import { Subscription} from "rxjs";
 
 import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
 import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service";
 import {MapMarker} from "../../../../core/components/maps/maps.model";
 import {BookingsService} from "../../../../core/states/bookings/bookings.service";
+import {bookSubject, BookSubjectPayload} from "../../../../core/subject/book.subject";
+import {BookingModalComponent} from "../../../../core/components/booking-modal/booking-modal.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-overview',
@@ -14,20 +18,23 @@ import {BookingsService} from "../../../../core/states/bookings/bookings.service
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit, OnDestroy {
-  constructor(
-    private readonly vehiclesQuery: VehiclesQuery,
-    private readonly vehiclesService: VehiclesService,
-    private readonly bookingsService: BookingsService,
-  ) {}
-
+  bookSubjectSubscription$: Subscription;
   vehiclesSubscription$: Subscription;
   mapMarkers: MapMarker[] = [];
 
   filterForm = new FormControl('');
   filterList: { value: string; name: string; }[] = [];
 
+  constructor(
+    public dialog: MatDialog,
+    private readonly vehiclesQuery: VehiclesQuery,
+    private readonly vehiclesService: VehiclesService,
+    private readonly bookingsService: BookingsService,
+    private readonly snackBar: MatSnackBar
+  ) {}
+
   onFilterChange({ value }: MatSelectChange) {
-    const request$ = this.vehiclesService.getVehiclesByType(value).subscribe((dd) => {
+    const request$ = this.vehiclesService.getVehiclesByType(value).subscribe(() => {
       request$ && request$.unsubscribe();
     });
   }
@@ -36,7 +43,39 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.bookingsService.get(id).subscribe();
   }
 
+  openDialog(params: BookSubjectPayload) {
+    const dialogRef = this.dialog.open(BookingModalComponent, {
+      data: params,
+      width: "400px",
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+        const { vehicleId, fullName } = result;
+        try {
+          await this.bookingsService.add(vehicleId, fullName);
+          this.onMarkerClick(vehicleId);
+          this.snackBar.open("The booking has been made", "Close", {
+            horizontalPosition: "right",
+            verticalPosition: "bottom",
+            politeness: "off",
+          });
+        } catch (e) {
+          this.snackBar.open("The reservation has not been made", "Close", {
+            horizontalPosition: "right",
+            verticalPosition: "bottom",
+            politeness: "off",
+          });
+        }
+      }
+    });
+  }
+
   ngOnInit() {
+    this.bookSubjectSubscription$ = bookSubject.subscribe(value => {
+      this.openDialog(value);
+    });
+
     this.vehiclesService.get().subscribe();
     this.vehiclesSubscription$ = this.vehiclesQuery.selectAll().subscribe((vehicles) => {
       this.mapMarkers = vehicles.map(({ location, name, ...vehicle }) => ({

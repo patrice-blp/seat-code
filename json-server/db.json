@@ -23,7 +23,7 @@
       "description": "Diseño e ideas atrevidas que te inspiran para dejarte llevar.",
       "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models/nuevo-seat-arona.png",
       "type": "car",
-      "price": 12.50,
+      "price": 12.5,
       "seats": 5,
       "location": {
         "place": "Barajas",
@@ -39,7 +39,7 @@
       "description": "Conduce de forma más inteligente, con un rendimiento dinámico y un diseño elegante.",
       "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models-dgt/nuevo-seat-leon-5d.png",
       "type": "car",
-      "price": 11.50,
+      "price": 11.5,
       "seats": 5,
       "location": {
         "place": "O'Donnell",
@@ -174,12 +174,14 @@
     {
       "id": 1,
       "fullName": "Frank Moore",
-      "vehicleId": 1
+      "vehicleId": 1,
+      "date": "2023-06-14T17:23:25.268Z"
     },
     {
       "id": 2,
       "fullName": "Eva V.",
-      "vehicleId": 3
+      "vehicleId": 3,
+      "date": "2023-06-15T17:22:25.268Z"
     }
   ]
 }

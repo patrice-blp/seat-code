@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import {catchError, of, tap} from "rxjs";
+import {catchError, lastValueFrom, of, tap} from "rxjs";
 
 import {BookingsStore} from "./bookings.store";
 import {BookingModel} from "../../model/booking.model";
@@ -21,5 +21,11 @@ export class BookingsService {
           return of(false);
         })
       )
+  }
+
+  add(id: number, fullName: string) {
+    const date = new Date().toISOString();
+    const source$ = this.http.post<any>("@clientApi/reservations/", { vehicleId: id, fullName, date });
+    return lastValueFrom(source$);
   }
 }
