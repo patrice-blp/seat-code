@@ -1,9 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormControl} from "@angular/forms";
 import {Subscription} from "rxjs";
 
 import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
 import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service";
 import {MapMarker} from "../../../../core/components/maps/maps.model";
+import {MatSelectChange} from "@angular/material/select";
 
 @Component({
   selector: 'app-overview',
@@ -19,10 +21,20 @@ export class OverviewComponent implements OnInit, OnDestroy {
   vehiclesSubscription$: Subscription;
   mapMarkers: MapMarker[] = [];
 
+  selectedFilters: string[] = [];
+  filterForm = new FormControl('');
+  filterList: { value: string; name: string; }[] = [];
+
+  onFilterChange({ value }: MatSelectChange) {
+    const request$ = this.vehiclesService.getVehiclesByType(value).subscribe((dd) => {
+      request$ && request$.unsubscribe();
+    });
+  }
+
   ngOnInit() {
     this.vehiclesService.get().subscribe();
     this.vehiclesSubscription$ = this.vehiclesQuery.selectAll().subscribe((vehicles) => {
-      const points: MapMarker[] = vehicles.map(({ location, name, ...vehicle }) => ({
+      this.mapMarkers = vehicles.map(({ location, name, ...vehicle }) => ({
         title: name,
         coordinates: {
           lat: location.coordinates.lat,
@@ -34,8 +46,19 @@ export class OverviewComponent implements OnInit, OnDestroy {
           place: location.place
         },
       }));
-      this.mapMarkers.push(...points);
-    })
+
+      const vehiclesNames = {
+        car: "Car",
+        electric_scooter: "Scooter",
+        motorcycle: "Motor cycle",
+      };
+
+      if (!this.filterList.length) {
+        const filters = vehicles.map(({ type }) => type);
+        this.filterList = [...new Set(filters)]
+          .map((type) => ({ value: type, name: vehiclesNames[type] }));
+      }
+    });
   }
 
   ngOnDestroy() {

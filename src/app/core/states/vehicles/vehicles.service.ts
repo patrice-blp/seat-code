@@ -12,4 +12,8 @@ export class VehiclesService extends NgEntityService<VehiclesState> {
     super(store);
   }
 
+  getVehiclesByType(filters: string[]) {
+    return this.get({ params: { type: filters } });
+  }
+
 }

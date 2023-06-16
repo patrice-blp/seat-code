@@ -1,0 +1,11 @@
+.home-container {
+  position: relative;
+  height: 90%;
+
+  .form-field {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    min-width: 400px;
+  }
+}

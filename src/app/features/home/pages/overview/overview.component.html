@@ -1,1 +1,9 @@
-<app-maps [markers]="mapMarkers"></app-maps>
+<div class="home-container">
+  <app-maps [markers]="mapMarkers"></app-maps>
+  <mat-form-field class="form-field">
+    <mat-label>Vehicle type</mat-label>
+    <mat-select [formControl]="filterForm" multiple (selectionChange)="onFilterChange($event)">
+      <mat-option *ngFor="let filter of filterList" [value]="filter.value">{{filter.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
