@@ -73,4 +73,6 @@ export class MapsComponent {
     this.itemMarker = itemMarker;
     this.infoWindow.open(marker);
   }
+
+  icon(type: string) {}
 }

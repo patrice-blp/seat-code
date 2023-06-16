@@ -22,19 +22,16 @@ export class OverviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.vehiclesService.get().subscribe();
     this.vehiclesSubscription$ = this.vehiclesQuery.selectAll().subscribe((vehicles) => {
-      const points: MapMarker[] = vehicles.map((vehicle) => ({
-        title: vehicle.name,
+      const points: MapMarker[] = vehicles.map(({ location, name, ...vehicle }) => ({
+        title: name,
         coordinates: {
-          lat: vehicle.location.coordinates.lat,
-          lng: vehicle.location.coordinates.long
+          lat: location.coordinates.lat,
+          lng: location.coordinates.long
         },
         data: {
-          image: vehicle.image,
-          description: vehicle.description,
-          price: vehicle.price,
-          seats: vehicle.seats,
-          city: vehicle.location.city,
-          place: vehicle.location.place
+          ...vehicle,
+          city: location.city,
+          place: location.place
         },
       }));
       this.mapMarkers.push(...points);
