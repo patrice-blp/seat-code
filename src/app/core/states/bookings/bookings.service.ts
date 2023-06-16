@@ -11,10 +11,10 @@ export class BookingsService {
   }
 
   get(id: number) {
-    return this.http.get<BookingModel>(`@clientApi/reservations/${id}`)
+    return this.http.get<BookingModel[]>(`@clientApi/reservations`, { params: { vehicleId: id } })
       .pipe(
         tap((entity) => {
-          this.bookingsStore.update(state => ({ ...state, [id]: entity }));
+          this.bookingsStore.update(state => ({ ...state, [id]: entity[0] }));
         }),
         catchError(() => {
           this.bookingsStore.update({[id]: {}});
