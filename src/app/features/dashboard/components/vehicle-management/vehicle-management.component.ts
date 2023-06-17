@@ -8,15 +8,15 @@ const urlPattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z
 
 @Component({
   selector: 'app-add-vehicle',
-  templateUrl: './add-vehicle.component.html',
-  styleUrls: ['./add-vehicle.component.scss']
+  templateUrl: './vehicle-management.component.html',
+  styleUrls: ['./vehicle-management.component.scss']
 })
-export class AddVehicleComponent implements OnInit {
+export class VehicleManagementComponent implements OnInit {
   types = getVehiclesTypes();
   vehicleForm: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<AddVehicleComponent>,
+    public dialogRef: MatDialogRef<VehicleManagementComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 

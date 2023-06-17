@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
+import {MatDialog} from "@angular/material/dialog";
 import {lastValueFrom} from "rxjs";
 
 import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
@@ -7,8 +8,7 @@ import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service
 import {VEHICLES_NAMES} from "../../../../core/const/const";
 import {Vehicle, VehicleType} from "../../../../core/model/vehicle.model";
 import {SnackbarService} from "../../../../core/services/snackbar.service";
-import {MatDialog} from "@angular/material/dialog";
-import {AddVehicleComponent} from "../add-vehicle/add-vehicle.component";
+import {VehicleManagementComponent} from "../vehicle-management/vehicle-management.component";
 
 @Component({
   selector: 'app-catalogue',
@@ -33,7 +33,7 @@ export class CatalogueComponent implements AfterViewInit, OnInit {
   }
 
   openDialogForm(): void {
-    const dialogRef = this.dialog.open(AddVehicleComponent, {
+    const dialogRef = this.dialog.open(VehicleManagementComponent, {
       data: {},
       width: "700px"
     });

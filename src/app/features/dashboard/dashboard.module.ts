@@ -13,14 +13,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
-import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
 import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CatalogueComponent,
-    AddVehicleComponent,
+    VehicleManagementComponent,
   ],
   imports: [
     CommonModule,
