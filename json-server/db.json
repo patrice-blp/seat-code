@@ -51,21 +51,21 @@
       }
     },
     {
-      "name": "SEAT Ateca Alicante",
+      "id": 4,
+      "name": "SEAT Ateca",
       "description": "Tecnología avanzada que hace que todo funcione a la perfección, para que puedas disfrutar al máximo de la ciudad.",
+      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models-dgt/nuevo-seat-ateca.png",
       "type": "car",
       "price": 11.99,
       "seats": 5,
-      "image": "https://www.seat.es/content/dam/countries/es/seat-website/global-header/global-navigation/models-dgt/nuevo-seat-ateca.png",
       "location": {
         "place": "Fundación Canal",
         "city": "Madrid",
         "coordinates": {
-          "long": -3.6880304479667,
-          "lat": 40.46620741930048
+          "lat": 40.46620741930048,
+          "long": -3.6880304479667
         }
-      },
-      "id": 4
+      }
     },
     {
       "id": 5,
@@ -81,23 +81,6 @@
         "coordinates": {
           "lat": 40.42736711927347,
           "long": -3.6474509230800045
-        }
-      }
-    },
-    {
-      "id": 6,
-      "name": "SEAT MÓ 125 #2",
-      "description": "La forma más inteligente de moverte por la ciudad",
-      "image": "https://www.seat.es/content/dam/public/seat-website/global-header/global-navigation/models/new-seat-mo-125-performance-electric-scooter.png",
-      "type": "motorcycle",
-      "price": 7.99,
-      "seats": 1,
-      "location": {
-        "place": "Estación Del Arte",
-        "city": "Madrid",
-        "coordinates": {
-          "lat": 40.426177553686024,
-          "long": -3.684241805950463
         }
       }
     },
@@ -119,21 +102,21 @@
       }
     },
     {
+      "id": 8,
       "name": "SEAT MÓ 65 #1",
       "description": "Con tecnología avanzada para que nunca pierdas el ritmo.",
-      "type": "electric_scooter",
-      "price": 3.89,
-      "seats": 1,
       "image": "https://www.seat.es/content/dam/public/seat-website/carworlds/seat-mo/overview/version-compare/seat-mo-65-electric-scooter.jpg",
+      "type": "electric_scooter",
+      "price": 3.99,
+      "seats": 1,
       "location": {
         "place": "Estación Del Arte",
         "city": "Madrid",
         "coordinates": {
-          "long": -3.746327971060342,
-          "lat": 40.38988327695034
+          "lat": 40.38988327695034,
+          "long": -3.746327971060342
         }
-      },
-      "id": 8
+      }
     },
     {
       "id": 9,
@@ -168,23 +151,6 @@
           "long": -3.6691060907155686
         }
       }
-    },
-    {
-      "name": "Maserati Levante",
-      "description": "El Levante se fabrica en una vanguardista línea de producción de la planta de Mirafiori (Turín), que ha sido recientemente renovada para satisfacer la demanda. El Maserati Design Center es el artífice de este nuevo SUV de lujo. ",
-      "type": "car",
-      "price": 16,
-      "seats": 5,
-      "image": "https://www.cochesyconcesionarios.com/uploads/maserati/levante/1/od/maserati-levante-04-ff14bc263ee90368fc6972fcd88ac346eeffbc90.jpeg",
-      "location": {
-        "place": "Plaza de España",
-        "city": "Madrid",
-        "coordinates": {
-          "long": -3.7121885210739656,
-          "lat": 40.42338605566493
-        }
-      },
-      "id": 11
     }
   ],
   "reservations": [
