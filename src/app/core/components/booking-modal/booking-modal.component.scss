@@ -3,7 +3,7 @@
 $blue-gray-palette: mat.define-palette(mat.$blue-gray-palette);
 
 .booking-heading {
-  font-size: 14px;
+  font-size: 16px;
   color: mat.get-color-from-palette($blue-gray-palette);
   padding-bottom: 0;
   margin-bottom: 0;

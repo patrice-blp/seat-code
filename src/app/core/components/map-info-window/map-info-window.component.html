@@ -15,6 +15,7 @@
     </mat-chip-listbox>
   </mat-card-content>
   <mat-card-actions align="end">
+    <span class="mdc-floating-label">{{getDistance(item.coordinates)}} km away</span>
     <span class="not-available" *ngIf="bookingInfo && !!bookingInfo.id">Vehicle not available</span>
     <button mat-flat-button color="primary" *ngIf="bookingInfo && !bookingInfo.id" (click)="openModal()">Book</button>
   </mat-card-actions>

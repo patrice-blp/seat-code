@@ -4,6 +4,7 @@ $red-palette: mat.define-palette(mat.$red-palette);
 
 .map-card {
   width: 400px;
+  box-shadow: none;
 
   .map-img {
     text-align: center;

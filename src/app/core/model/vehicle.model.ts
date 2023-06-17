@@ -6,7 +6,7 @@ type Location = {
   coordinates: CoordinatesModel
 }
 
-export type VehicleType = "car" | "motorcycle" | "electric_scooter"
+export type VehicleType = "car" | "motorcycle" | "electric_scooter" | "user_position"
 
 export interface Vehicle {
   id: number

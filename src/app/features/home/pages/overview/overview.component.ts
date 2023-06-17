@@ -11,6 +11,7 @@ import {BookingsService} from "../../../../core/states/bookings/bookings.service
 import {bookSubject, BookSubjectPayload} from "../../../../core/subject/book.subject";
 import {BookingModalComponent} from "../../../../core/components/booking-modal/booking-modal.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {USER_LOCATION} from "../../../../core/const/user-location.const";
 
 @Component({
   selector: 'app-overview',
@@ -78,7 +79,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
     this.vehiclesService.get().subscribe();
     this.vehiclesSubscription$ = this.vehiclesQuery.selectAll().subscribe((vehicles) => {
-      this.mapMarkers = vehicles.map(({ location, name, ...vehicle }) => ({
+      const markers = vehicles.map(({ location, name, ...vehicle }) => ({
         title: name,
         coordinates: {
           lat: location.coordinates.lat,
@@ -91,10 +92,24 @@ export class OverviewComponent implements OnInit, OnDestroy {
         },
       }));
 
+      markers.push({
+        title: "You",
+        coordinates: {
+          lat: USER_LOCATION.lat,
+          lng: USER_LOCATION.long,
+        },
+        data: {
+          type: "user_position",
+        } as any,
+      });
+
+      this.mapMarkers = markers;
+
       const vehiclesNames = {
         car: "Car",
         electric_scooter: "Scooter",
         motorcycle: "Motor cycle",
+        user_position: "",
       };
 
       if (!this.filterList.length) {

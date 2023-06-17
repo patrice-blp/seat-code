@@ -30,7 +30,7 @@ export class MapsComponent {
   @Input() markerDetails: any;
   @Output() markerClick = new EventEmitter<number>();
 
-  zoom = 13;
+  zoom = 12.7;
   markerOptions: google.maps.MarkerOptions = {
     draggable: false,
   };
@@ -70,9 +70,11 @@ export class MapsComponent {
   }
 
   openInfoWindow(marker: BaseMapMarker, itemMarker: MapMarker) {
-    this.itemMarker = itemMarker;
-    this.infoWindow.open(marker);
-    this.markerClick.emit(itemMarker.data.id);
+    if (itemMarker.data.type !== "user_position") {
+      this.itemMarker = itemMarker;
+      this.infoWindow.open(marker);
+      this.markerClick.emit(itemMarker.data.id);
+    }
   }
 
   mapIcon(type: MapIcon) {
@@ -80,6 +82,7 @@ export class MapsComponent {
       car: "car.png",
       motorcycle: "moped.png",
       electric_scooter: "scooter.png",
+      user_position: "user-location.png",
     };
 
     const icon = icons[type] ?? icons.car;
