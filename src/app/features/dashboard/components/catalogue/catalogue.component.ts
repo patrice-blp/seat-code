@@ -9,6 +9,7 @@ import {VEHICLES_NAMES} from "../../../../core/const/const";
 import {Vehicle, VehicleType} from "../../../../core/model/vehicle.model";
 import {SnackbarService} from "../../../../core/services/snackbar.service";
 import {VehicleManagementComponent} from "../vehicle-management/vehicle-management.component";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-catalogue',
@@ -17,7 +18,8 @@ import {VehicleManagementComponent} from "../vehicle-management/vehicle-manageme
 })
 export class CatalogueComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ["image", "id", "name", "type", "price", "seats", "actions"];
-  dataSource = this.vehiclesQuery.selectAll();
+  //dataSource = this.vehiclesQuery.selectAll();
+  dataSource = new MatTableDataSource<Vehicle>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -78,19 +80,20 @@ export class CatalogueComponent implements AfterViewInit, OnInit {
   }
 
   applyFilter(event: Event) {
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
-    //
-    // if (this.dataSource.paginator) {
-    //   this.dataSource.paginator.firstPage();
-    // }
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit() {
     this.vehiclesService.get().subscribe();
+    this.vehiclesQuery.selectAll().subscribe((items) => this.dataSource.data = items)
   }
 }
