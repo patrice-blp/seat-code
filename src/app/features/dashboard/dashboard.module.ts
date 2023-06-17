@@ -7,15 +7,20 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
+import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    AddVehicleComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +33,9 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
     NgOptimizedImage,
     MatButtonModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
   ]
 })
 export class DashboardModule { }

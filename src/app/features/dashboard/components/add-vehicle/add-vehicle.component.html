@@ -1,0 +1,76 @@
+<h1 mat-dialog-title>Create new vehicle</h1>
+<form [formGroup]="vehicleForm">
+  <div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let vehicleType of types" [value]="vehicleType.value">
+          {{vehicleType.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-2-column">
+      <img *ngIf="isValidUrl" [src]="getImage" alt="vehicle image" [width]="60" [height]="60">
+      <mat-form-field>
+        <mat-label>Image Link</mat-label>
+        <input matInput formControlName="image" required>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Vehicle Name</mat-label>
+      <input matInput formControlName="name" [min]="4" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" required>
+    </mat-form-field>
+
+    <div class="form-2-column">
+      <mat-form-field>
+        <mat-label>Price per day</mat-label>
+        <input matInput formControlName="price" type="number" [min]="1" [max]="20" [maxLength]="2" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Seats</mat-label>
+        <input matInput formControlName="seats" type="number" [min]="1" [max]="5" [maxLength]="2" required>
+      </mat-form-field>
+    </div>
+
+    <h6>Localization</h6>
+    <div formGroupName="location">
+      <div class="form-2-column">
+        <mat-form-field>
+          <mat-label>Place name</mat-label>
+          <input matInput formControlName="place">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city">
+        </mat-form-field>
+      </div>
+      <div class="form-2-column" formGroupName="coordinates">
+        <mat-form-field>
+          <mat-label>Coordinate - Latitude</mat-label>
+          <input matInput formControlName="lat" type="number" [min]="1" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Coordinate - Longitude</mat-label>
+          <input matInput formControlName="long" type="number" required>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button
+      mat-flat-button
+      color="primary"
+      [mat-dialog-close]="vehicleForm.getRawValue()"
+      [disabled]="vehicleForm.invalid">Create</button>
+  </div>
+</form>

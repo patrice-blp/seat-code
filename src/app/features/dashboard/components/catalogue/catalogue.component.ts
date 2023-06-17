@@ -7,6 +7,8 @@ import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service
 import {VEHICLES_NAMES} from "../../../../core/const/const";
 import {Vehicle, VehicleType} from "../../../../core/model/vehicle.model";
 import {SnackbarService} from "../../../../core/services/snackbar.service";
+import {MatDialog} from "@angular/material/dialog";
+import {AddVehicleComponent} from "../add-vehicle/add-vehicle.component";
 
 @Component({
   selector: 'app-catalogue',
@@ -23,10 +25,31 @@ export class CatalogueComponent implements AfterViewInit, OnInit {
     private readonly snackbarService: SnackbarService,
     private readonly vehiclesQuery: VehiclesQuery,
     private readonly vehiclesService: VehiclesService,
+    public dialog: MatDialog
   ) {}
 
   vehicleName(type: VehicleType) {
     return VEHICLES_NAMES[type];
+  }
+
+  openDialogForm(): void {
+    const dialogRef = this.dialog.open(AddVehicleComponent, {
+      data: {},
+      width: "700px"
+    });
+
+    dialogRef
+      .afterClosed()
+      .subscribe(async (result) => {
+        if (result?.name) {
+          try {
+            await lastValueFrom(this.vehiclesService.add(result));
+            this.snackbarService.showMessage("New vehicle has been created");
+          } catch (e) {
+            this.snackbarService.showMessage("Vehicle couldn't been created");
+          }
+        }
+      });
   }
 
   async deleteElement(item: Vehicle) {

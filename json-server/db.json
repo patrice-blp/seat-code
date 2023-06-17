@@ -168,6 +168,23 @@
           "long": -3.6691060907155686
         }
       }
+    },
+    {
+      "name": "Maserati Levante",
+      "description": "El Levante se fabrica en una vanguardista línea de producción de la planta de Mirafiori (Turín), que ha sido recientemente renovada para satisfacer la demanda. El Maserati Design Center es el artífice de este nuevo SUV de lujo. ",
+      "type": "car",
+      "price": 16,
+      "seats": 5,
+      "image": "https://www.cochesyconcesionarios.com/uploads/maserati/levante/1/od/maserati-levante-04-ff14bc263ee90368fc6972fcd88ac346eeffbc90.jpeg",
+      "location": {
+        "place": "Plaza de España",
+        "city": "Madrid",
+        "coordinates": {
+          "long": -3.7121885210739656,
+          "lat": 40.42338605566493
+        }
+      },
+      "id": 11
     }
   ],
   "reservations": [
