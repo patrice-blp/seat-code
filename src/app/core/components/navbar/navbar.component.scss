@@ -1,3 +1,14 @@
 .app-name {
   padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  span {
+    font-size: inherit;
+    &.slogan {
+      font-size: 12px;
+      color: #3f51b5;
+    }
+  }
 }
