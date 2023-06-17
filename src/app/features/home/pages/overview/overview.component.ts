@@ -12,6 +12,7 @@ import {bookSubject, BookSubjectPayload} from "../../../../core/subject/book.sub
 import {BookingModalComponent} from "../../../../core/components/booking-modal/booking-modal.component";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {USER_LOCATION} from "../../../../core/const/user-location.const";
+import {VEHICLES_NAMES} from "../../../../core/const/const";
 
 @Component({
   selector: 'app-overview',
@@ -105,17 +106,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
       this.mapMarkers = markers;
 
-      const vehiclesNames = {
-        car: "Car",
-        electric_scooter: "Scooter",
-        motorcycle: "Motor cycle",
-        user_position: "",
-      };
-
       if (!this.filterList.length) {
         const filters = vehicles.map(({ type }) => type);
         this.filterList = [...new Set(filters)]
-          .map((type) => ({ value: type, name: vehiclesNames[type] }));
+          .map((type) => ({ value: type, name: VEHICLES_NAMES[type] }));
       }
     });
   }

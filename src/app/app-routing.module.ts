@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import("./features/dashboard/dashboard-routing.module").then(m => m.DashboardRoutingModule)
+    loadChildren: () => import("./features/dashboard/dashboard.module").then(m => m.DashboardModule)
   }
 ];
 
