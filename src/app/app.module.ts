@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {NG_ENTITY_SERVICE_CONFIG} from "@datorama/akita-ng-entity-service";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { registerLocaleData } from "@angular/common";
@@ -30,6 +31,7 @@ registerLocaleData(localeEs);
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatSnackBarModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' },

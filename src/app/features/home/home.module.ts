@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 import { HomeRoutingModule } from './home-routing.module';
 import { OverviewComponent } from './pages/overview/overview.component';
@@ -21,7 +20,6 @@ import {BookingModalComponent} from "../../core/components/booking-modal/booking
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatSnackBarModule,
     BookingModalComponent,
   ]
 })

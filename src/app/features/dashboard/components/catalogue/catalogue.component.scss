@@ -10,3 +10,11 @@ mat-form-field {
   padding-right: 10px;
   display: flex;
 }
+
+.td-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: end;
+}

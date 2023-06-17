@@ -10,9 +10,9 @@ import {MapMarker} from "../../../../core/components/maps/maps.model";
 import {BookingsService} from "../../../../core/states/bookings/bookings.service";
 import {bookSubject, BookSubjectPayload} from "../../../../core/subject/book.subject";
 import {BookingModalComponent} from "../../../../core/components/booking-modal/booking-modal.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {USER_LOCATION} from "../../../../core/const/user-location.const";
 import {VEHICLES_NAMES} from "../../../../core/const/const";
+import {SnackbarService} from "../../../../core/services/snackbar.service";
 
 @Component({
   selector: 'app-overview',
@@ -29,10 +29,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialog: MatDialog,
+    private readonly snackbarService: SnackbarService,
     private readonly vehiclesQuery: VehiclesQuery,
     private readonly vehiclesService: VehiclesService,
     private readonly bookingsService: BookingsService,
-    private readonly snackBar: MatSnackBar
   ) {}
 
   onFilterChange({ value }: MatSelectChange) {
@@ -57,17 +57,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
         try {
           await this.bookingsService.add(vehicleId, fullName);
           this.onMarkerClick(vehicleId);
-          this.snackBar.open("The booking has been made", "Close", {
-            horizontalPosition: "right",
-            verticalPosition: "bottom",
-            politeness: "off",
-          });
+          this.snackbarService.showMessage("The booking has been made");
         } catch (e) {
-          this.snackBar.open("The reservation has not been made", "Close", {
-            horizontalPosition: "right",
-            verticalPosition: "bottom",
-            politeness: "off",
-          });
+          this.snackbarService.showMessage("The reservation has not been made");
         }
       }
     });

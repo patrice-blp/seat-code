@@ -1,10 +1,12 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from "@angular/material/paginator";
-import {MatTableDataSource} from "@angular/material/table";
+import {lastValueFrom} from "rxjs";
+
 import {VehiclesQuery} from "../../../../core/states/vehicles/vehicles.query";
 import {VehiclesService} from "../../../../core/states/vehicles/vehicles.service";
 import {VEHICLES_NAMES} from "../../../../core/const/const";
-import {VehicleType} from "../../../../core/model/vehicle.model";
+import {Vehicle, VehicleType} from "../../../../core/model/vehicle.model";
+import {SnackbarService} from "../../../../core/services/snackbar.service";
 
 @Component({
   selector: 'app-catalogue',
@@ -12,17 +14,30 @@ import {VehicleType} from "../../../../core/model/vehicle.model";
   styleUrls: ['./catalogue.component.scss']
 })
 export class CatalogueComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ["image", "id", "name", "type", "price", "seats"];
+  displayedColumns: string[] = ["image", "id", "name", "type", "price", "seats", "actions"];
   dataSource = this.vehiclesQuery.selectAll();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
+    private readonly snackbarService: SnackbarService,
     private readonly vehiclesQuery: VehiclesQuery,
-    private readonly vehiclesService: VehiclesService) {}
+    private readonly vehiclesService: VehiclesService,
+  ) {}
 
   vehicleName(type: VehicleType) {
     return VEHICLES_NAMES[type];
+  }
+
+  async deleteElement(item: Vehicle) {
+    if(confirm(`You are about to remove "${item.name}" from the catalog`)) {
+      try {
+        await lastValueFrom(this.vehiclesService.delete(item.id));
+        this.snackbarService.showMessage("Vehicle has been deleted");
+      } catch (e) {
+        this.snackbarService.showMessage("Vehicle couldn't been deleted");
+      }
+    }
   }
 
   applyFilter(event: Event) {
