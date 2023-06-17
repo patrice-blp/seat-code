@@ -1,4 +1,6 @@
-<h1 mat-dialog-title>Create new vehicle</h1>
+<h1 mat-dialog-title *ngIf="!data.editMode">Create new vehicle</h1>
+<h1 mat-dialog-title *ngIf="data.editMode">Update - {{data.data?.name}}</h1>
+
 <form [formGroup]="vehicleForm">
   <div mat-dialog-content>
     <p>What's your favorite animal?</p>
@@ -70,7 +72,7 @@
     <button
       mat-flat-button
       color="primary"
-      [mat-dialog-close]="vehicleForm.getRawValue()"
+      [mat-dialog-close]="{ data: vehicleForm.getRawValue(), editMode: data.editMode, id: data.data?.id }"
       [disabled]="vehicleForm.invalid">Create</button>
   </div>
 </form>

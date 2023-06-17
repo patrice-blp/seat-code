@@ -32,21 +32,35 @@ export class CatalogueComponent implements AfterViewInit, OnInit {
     return VEHICLES_NAMES[type];
   }
 
-  openDialogForm(): void {
+  openDialogForm(data?: Vehicle): void {
     const dialogRef = this.dialog.open(VehicleManagementComponent, {
-      data: {},
-      width: "700px"
+      data: {
+        editMode: Boolean(data),
+        data,
+      },
+      width: "700px",
+      hasBackdrop: true,
+      disableClose: true,
     });
 
     dialogRef
       .afterClosed()
-      .subscribe(async (result) => {
-        if (result?.name) {
+      .subscribe(async ({ editMode, data, id }) => {
+        if (data?.name) {
           try {
-            await lastValueFrom(this.vehiclesService.add(result));
-            this.snackbarService.showMessage("New vehicle has been created");
+            let snackbarMessage = "New vehicle has been created";
+
+            if (editMode) {
+              snackbarMessage = "Vehicle has been updated";
+              await lastValueFrom(this.vehiclesService.update(id, data));
+            } else {
+              await lastValueFrom(this.vehiclesService.add(data));
+            }
+
+            this.snackbarService.showMessage(snackbarMessage);
           } catch (e) {
-            this.snackbarService.showMessage("Vehicle couldn't been created");
+            let errorMessage = editMode ? "Vehicle couldn't been updated" : "Vehicle couldn't been created";
+            this.snackbarService.showMessage(errorMessage);
           }
         }
       });

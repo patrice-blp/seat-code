@@ -3,6 +3,12 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {getVehiclesTypes} from "../../../../core/const/const";
+import {Vehicle} from "../../../../core/model/vehicle.model";
+
+type DataManagementModel = {
+  editMode: boolean;
+  data?: Vehicle;
+}
 
 const urlPattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 
@@ -17,7 +23,7 @@ export class VehicleManagementComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<VehicleManagementComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: DataManagementModel,
   ) {}
 
   get getImage() {
@@ -39,7 +45,7 @@ export class VehicleManagementComponent implements OnInit {
   }
 
   onCancel() {
-    this.dialogRef.close();
+    this.dialogRef.close({});
   }
 
   ngOnInit() {
@@ -83,5 +89,10 @@ export class VehicleManagementComponent implements OnInit {
         })
       }),
     });
+
+    if (this.data.editMode && this.data?.data) {
+      const { id, ...formData } = this.data.data;
+      this.vehicleForm.setValue(formData);
+    }
   }
 }
