@@ -12,4 +12,8 @@ export class VehiclesBookingService extends NgEntityService<VehiclesBookingState
     super(store);
   }
 
+  getBookings() {
+    return super.get({ params: { _expand: "vehicle" } });
+  }
+
 }

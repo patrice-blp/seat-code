@@ -15,12 +15,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
 import {MatSelectModule} from "@angular/material/select";
+import { BookingReportComponent } from './components/booking-report/booking-report.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     CatalogueComponent,
     VehicleManagementComponent,
+    BookingReportComponent,
   ],
   imports: [
     CommonModule,

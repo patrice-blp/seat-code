@@ -1,4 +1,5 @@
 import {CoordinatesModel} from "./coordinates.model";
+import {Vehicle} from "./vehicle.model";
 
 export interface BookingModel {
   id: number;
@@ -6,4 +7,5 @@ export interface BookingModel {
   fullName: string;
   date: string;
   coordinates?: CoordinatesModel;
+  vehicle?: Vehicle;
 }
