@@ -16,6 +16,8 @@ import { CatalogueComponent } from './components/catalogue/catalogue.component';
 import { VehicleManagementComponent } from './components/vehicle-management/vehicle-management.component';
 import {MatSelectModule} from "@angular/material/select";
 import { BookingReportComponent } from './components/booking-report/booking-report.component';
+import { ReportDetailsComponent } from './components/report-details/report-details.component';
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { BookingReportComponent } from './components/booking-report/booking-repo
     CatalogueComponent,
     VehicleManagementComponent,
     BookingReportComponent,
+    ReportDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,7 @@ import { BookingReportComponent } from './components/booking-report/booking-repo
     MatDialogModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatDividerModule,
   ]
 })
 export class DashboardModule { }

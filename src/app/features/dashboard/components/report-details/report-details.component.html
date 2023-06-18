@@ -1,0 +1,42 @@
+<mat-dialog-content class="mat-typography">
+  <h1>Booking report</h1>
+  <h3>{{data.vehicle?.name}}</h3>
+
+  <p>{{data.vehicle?.description}}</p>
+
+  <mat-divider></mat-divider>
+
+  <div class="details-container">
+    <div class="content">
+      <h2>Customer</h2>
+
+      <strong>Name</strong>
+      <p>{{data.fullName}}</p>
+      <strong>Booking date</strong>
+      <p>{{data.date | date:"fullDate"}}</p>
+    </div>
+
+    <div class="content">
+      <h2>Vehicle information</h2>
+
+      <div>
+        <img [src]="data.vehicle?.image" alt="vehicle-image" width="auto">
+      </div>
+
+      <strong>Type</strong>
+      <p>{{vehicleName}}</p>
+
+      <strong>Seats</strong>
+      <p>{{data.vehicle?.seats}}</p>
+
+      <strong>Price</strong>
+      <p>{{data.vehicle?.price | currency:"EUR": "symbol":undefined:'es-ES'}}/day</p>
+
+      <strong>Seats</strong>
+      <p>{{data.vehicle?.seats}}</p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>

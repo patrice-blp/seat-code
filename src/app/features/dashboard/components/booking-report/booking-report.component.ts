@@ -4,6 +4,9 @@ import {VehiclesBookingQuery} from "../../../../core/states/vehicles-booking/veh
 import {VehiclesBookingService} from "../../../../core/states/vehicles-booking/vehicles-booking.service";
 import {VehicleType} from "../../../../core/model/vehicle.model";
 import {VEHICLES_NAMES} from "../../../../core/const/const";
+import {MatDialog} from "@angular/material/dialog";
+import {ReportDetailsComponent} from "../report-details/report-details.component";
+import {VehicleBooking} from "../../../../core/states/vehicles-booking/vehicle-booking.model";
 
 @Component({
   selector: 'app-booking-report',
@@ -16,10 +19,15 @@ export class BookingReportComponent implements OnInit {
 
   constructor(
     private readonly bookingQuery: VehiclesBookingQuery,
-    private readonly bookingService: VehiclesBookingService) {}
+    private readonly bookingService: VehiclesBookingService,
+    public dialog: MatDialog) {}
 
   vehicleName(type: VehicleType) {
     return VEHICLES_NAMES[type];
+  }
+
+  openDetails(data: VehicleBooking) {
+    this.dialog.open(ReportDetailsComponent, { data })
   }
 
   ngOnInit() {
