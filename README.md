@@ -39,7 +39,10 @@ The information of the reservations made can be displayed in a table. To get mor
 - JSONServer
 
 ### Running instructions
+
 Make sure node js 16 or higher and npm are installed in the running environment.
+
+> <span style="color:#f09c16">**Google Maps key:**</span> You have to add the Google Maps key in the constant *GOOGLE_MAPS_API_KEY* in the file **app/core/const/google-maps.const.ts**
 
 Open your command line, go into the project directory and run the following
 
