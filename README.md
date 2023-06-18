@@ -1,27 +1,58 @@
-# SeatCode
+# Seat code
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
+Reserve a vehicle by visualizing the location of the vehicle and the customer on a map.
 
-## Development server
+### Instructions
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+***Customer booking***
 
-## Code scaffolding
+- Select the vehicle on the map to obtain vehicle information, availability and distance from the customer.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+- If the selected vehicle is available, you can make the reservation by clicking on the **Book** button, and then it will show you a form that you must fill in with the customer's information. Once reserved, the vehicle would become unavailable.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+***Management***
 
-## Running unit tests
+- The vehicle catalog can be managed, adding, deleting or updating the information of the available vehicles.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+- To add a new vehicle, press the blue button with the + icon to the right of the search engine. A modal will open with the form to fill out. Fill in all the required fields and save the form.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+- To update the available information, click on the Edit button and modify the form data.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+- To delete, you have to press the red icon, you will be presented with a confirmation to complete the deletion of the selected vehicle.
+
+***Manage Reservations***
+
+The information of the reservations made can be displayed in a table. To get more details of the reservation, you have to press the **Details** button that is on the right of each row.
+
+***
+### Stack
+
+- Angular 16
+- Angular Material 16
+- Google Maps
+- Akita State Management
+- RxJs
+- JSONServer
+
+### Running instructions
+Make sure node js 16 or higher and npm are installed in the running environment.
+
+Open your command line, go into the project directory and run the following
+
+    npm install
+    npm run serve:json-server
+
+Navigate to [http://localhost:4200](http://localhost:4200) to launch the project and [http://localhost:3000](http://localhost:3000) to launch JSON Server main page
+
+To run the tests, execute
+
+    npm run test
+
+
+### TODO
+
+1. Complete unit and end-to-end testing
