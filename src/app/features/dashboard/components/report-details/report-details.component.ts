@@ -1,8 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 import {VehicleBooking} from "../../../../core/states/vehicles-booking/vehicle-booking.model";
-import {VehicleType} from "../../../../core/model/vehicle.model";
 import {VEHICLES_NAMES} from "../../../../core/const/const";
 
 @Component({
@@ -12,7 +11,6 @@ import {VEHICLES_NAMES} from "../../../../core/const/const";
 })
 export class ReportDetailsComponent {
   constructor(
-    public dialogRef: MatDialogRef<ReportDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: VehicleBooking,
   ) {}
 

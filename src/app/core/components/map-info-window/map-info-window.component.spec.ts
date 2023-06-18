@@ -8,7 +8,7 @@ describe('MapInfoWindowComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MapInfoWindowComponent]
+      declarations: []
     });
     fixture = TestBed.createComponent(MapInfoWindowComponent);
     component = fixture.componentInstance;
